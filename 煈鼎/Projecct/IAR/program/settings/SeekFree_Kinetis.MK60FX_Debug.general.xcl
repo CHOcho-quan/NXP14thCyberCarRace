@@ -1,0 +1,15 @@
+"D:\professional software\IAR7.7\arm\bin\armproc.dll" 
+
+"D:\professional software\IAR7.7\arm\bin\armjlink2.dll" 
+
+"E:\work\seekfree\freescale_work\传感器历程\总钻风\总钻风例程(V2版本)\例程\1.一幅图像采集完成触发中断\总钻风例程K60(OLED显示二值化图像)\Projecct\IAR\program\MK60FX_Debug\Exe\SeekFree_Kinetis.out" 
+
+--plugin "D:\professional software\IAR7.7\arm\bin\armbat.dll" 
+
+--device_macro "D:\professional software\IAR7.7\arm\config\debugger\NXP\Kxx.dmac" 
+
+--flash_loader "D:\professional software\IAR7.7\arm\config\flashloader\NXP\FlashK60Fxxx128K.board" 
+
+
+
+

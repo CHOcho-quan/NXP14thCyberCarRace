@@ -1,0 +1,17 @@
+"D:\Program Files(x86)\IAR\arm\bin\armproc.dll" 
+
+"D:\Program Files(x86)\IAR\arm\bin\armjlink2.dll" 
+
+"E:\IARworkspace\煈鼎\Projecct\IAR\program\MK60DN_Debug\Exe\SeekFree_Kinetis.out" 
+
+--plugin "D:\Program Files(x86)\IAR\arm\bin\armbat.dll" 
+
+--device_macro "D:\Program Files(x86)\IAR\arm\config\debugger\NXP\Kxx.dmac" 
+
+--device_macro "D:\Program Files(x86)\IAR\arm\config\debugger\NXP\Kxx_Trace.dmac" 
+
+--flash_loader "D:\Program Files(x86)\IAR\arm\config\flashloader\NXP\FlashK60Dxxx128K.board" 
+
+
+
+
