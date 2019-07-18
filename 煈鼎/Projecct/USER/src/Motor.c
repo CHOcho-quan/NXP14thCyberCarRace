@@ -2,7 +2,7 @@
 #include "typedef.h"
 
 // ===== Setting =====
-#define SERVO_MID 5830 // (g_bus_clock/64*15/10000)  Adjust it according to your mech
+#define SERVO_MID 5380 // (g_bus_clock/64*15/10000)  Adjust it according to your mech
 
 // ===== Variables =====
 
@@ -95,8 +95,8 @@ void MotorR_Enable(u8 x){
 
 void Servo_Output(s16 x)
 {
-  if(x>400) x = 400;
-  if(x<-400) x = -400;
+  if(x>300) x = 300;
+  if(x<-300) x = -300;
   FTM2->CONTROLS[0].CnV=SERVO_MID + x;
 }
 

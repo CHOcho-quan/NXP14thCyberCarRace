@@ -23,9 +23,9 @@
 
 if ($debugfile -eq "")
 {
-& "D:\Program Files(x86)\IAR\common\bin\cspybat" -f "E:\IARworkspace\煈鼎\Projecct\IAR\program\settings\SeekFree_Kinetis.MK60DN_Debug.general.xcl" --backend -f "E:\IARworkspace\煈鼎\Projecct\IAR\program\settings\SeekFree_Kinetis.MK60DN_Debug.driver.xcl" 
+& "C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\common\bin\cspybat" -f "C:\Users\93430\Desktop\煈鼎7.18.6\煈鼎7.18.5\煈鼎7.17\Projecct\IAR\program\settings\SeekFree_Kinetis.MK60DN_Debug.general.xcl" --backend -f "C:\Users\93430\Desktop\煈鼎7.18.6\煈鼎7.18.5\煈鼎7.17\Projecct\IAR\program\settings\SeekFree_Kinetis.MK60DN_Debug.driver.xcl" 
 }
 else
 {
-& "D:\Program Files(x86)\IAR\common\bin\cspybat" -f "E:\IARworkspace\煈鼎\Projecct\IAR\program\settings\SeekFree_Kinetis.MK60DN_Debug.general.xcl" --debug_file=$debugfile --backend -f "E:\IARworkspace\煈鼎\Projecct\IAR\program\settings\SeekFree_Kinetis.MK60DN_Debug.driver.xcl" 
+& "C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\common\bin\cspybat" -f "C:\Users\93430\Desktop\煈鼎7.18.6\煈鼎7.18.5\煈鼎7.17\Projecct\IAR\program\settings\SeekFree_Kinetis.MK60DN_Debug.general.xcl" --debug_file=$debugfile --backend -f "C:\Users\93430\Desktop\煈鼎7.18.6\煈鼎7.18.5\煈鼎7.17\Projecct\IAR\program\settings\SeekFree_Kinetis.MK60DN_Debug.driver.xcl" 
 }

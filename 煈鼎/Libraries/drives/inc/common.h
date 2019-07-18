@@ -44,7 +44,7 @@ typedef volatile uint16     vuint16; // 16 bits
 typedef volatile uint32     vuint32; // 32 bits 
 typedef volatile uint64     vuint64; // 64 bits 
 
-
+extern uint32 bus_clk_mhz;
 
 
 typedef enum //枚举端口状态

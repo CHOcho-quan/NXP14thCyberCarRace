@@ -1,16 +1,16 @@
-"D:\Program Files(x86)\IAR\arm\bin\armproc.dll" 
+"C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\arm\bin\armproc.dll" 
 
-"D:\Program Files(x86)\IAR\arm\bin\armjlink2.dll" 
+"C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\arm\bin\armjlink2.dll" 
 
-"E:\IARworkspace\煈鼎\Projecct\IAR\program\MK60DN_Debug\Exe\SeekFree_Kinetis.out" 
+"C:\Users\93430\Desktop\煈鼎7.18.6\煈鼎7.18.5\煈鼎7.17\Projecct\IAR\program\MK60DN_Debug\Exe\SeekFree_Kinetis.out" 
 
---plugin "D:\Program Files(x86)\IAR\arm\bin\armbat.dll" 
+--plugin "C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\arm\bin\armbat.dll" 
 
---device_macro "D:\Program Files(x86)\IAR\arm\config\debugger\NXP\Kxx.dmac" 
+--device_macro "C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\arm\config\debugger\NXP\Kxx.dmac" 
 
---device_macro "D:\Program Files(x86)\IAR\arm\config\debugger\NXP\Kxx_Trace.dmac" 
+--device_macro "C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\arm\config\debugger\NXP\Kxx_Trace.dmac" 
 
---flash_loader "D:\Program Files(x86)\IAR\arm\config\flashloader\NXP\FlashK60Dxxx128K.board" 
+--flash_loader "C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\arm\config\flashloader\NXP\FlashK60Dxxx128K.board" 
 
 
 

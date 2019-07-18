@@ -234,7 +234,7 @@ uint16 version;
 void camera_init(void)
 {
     //设置参数    具体请参看使用手册
-    uint16 temp, i;
+    //uint16 temp, i;
     //uint8  send_buffer[4];
 
     
@@ -274,17 +274,21 @@ void camera_init(void)
     DisableInterrupts;
     //DMA通道0初始化，PTC18触发源(默认上升沿)，源地址为C_IN_DATA(1)(PTC8-PTC15)，目的地址为：image，每次传输1Byte 传输完毕保持目的地址
     dma_portx2buff_init(DMA_CH0, (void *)&MT9V032_DATAPORT, (void *)image, MT9V032_PCLK, DMA_BYTE1, COL*ROW, DADDR_RECOVER);
+    NVIC_EnableIRQ(DMA0_IRQn);
+  NVIC_SetPriority(DMA0_IRQn, NVIC_EncodePriority(5, 1, 2));
     port_init(MT9V032_PCLK, ALT1 | DMA_RISING | PULLDOWN);  	//PCLK  触发源设置
 	DMA_DIS(DMA_CH0);                                     		//禁用DMA通道
     DMA_IRQ_CLEAN(DMA_CH0);                               		//清除通道传输中断标志位
     DMA_IRQ_EN(DMA_CH0);                                  		//允许DMA通道中断
-	DMA_EN(DMA_CH0);  											//使能DMA
+	DMA_EN(DMA_CH0);  
+        //使能DMA
 	
 	disable_irq(MT9V032_INTERRUPT_NUNBERS);                     //关闭PTC的中断
     //port_init(C7, ALT1 | IRQ_FALLING | PULLDOWN);      			//行中断
     port_init(MT9V032_VSYNC, ALT1 | IRQ_FALLING | PULLDOWN);    //场中断，下降沿触发中断、下拉
-    set_irq_priority(MT9V032_INTERRUPT_NUNBERS,1);              // 中断优先级
+    //set_irq_priority(MT9V032_INTERRUPT_NUNBERS,1);              // 中断优先级
     enable_irq (MT9V032_INTERRUPT_NUNBERS);
+    NVIC_SetPriority(PORTA_IRQn, NVIC_EncodePriority(5, 1, 2));
 	EnableInterrupts;
 }
 

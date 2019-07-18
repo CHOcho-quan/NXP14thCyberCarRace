@@ -41,7 +41,7 @@
         <MultiCoreRunAll>1</MultiCoreRunAll>
     </Simulator>
     <DebugChecksum>
-        <Checksum>1538080706</Checksum>
+        <Checksum>4058652605</Checksum>
     </DebugChecksum>
     <Exceptions>
         <StopOnUncaught>_ 0</StopOnUncaught>
@@ -188,13 +188,15 @@
         <Count>0</Count>
     </Breakpoints2>
     <Aliases>
-        <A0>_ "E:\IARworkspace\K60例程\1.一幅图像采集完成触发中断\总钻风例程K60(OLED显示二值化图像)\Libraries\drives\src\common.c" ""</A0>
-        <A1>_ "E:\IARworkspace\K60例程\1.一幅图像采集完成触发中断\总钻风例程K60(OLED显示二值化图像)\Libraries\startup\DeviceSupport\system_MK60.c" ""</A1>
-        <A2>_ "F:\work\seekfree\开发板\用户资料\3-开发板历程\4-应用例程\23-总钻风&amp;2.8TFT显示图像(OK)\Projecct\USER\src\isr.c" ""</A2>
-        <A3>_ "F:\work\seekfree\开发板\用户资料\3-开发板历程\4-应用例程\23-总钻风&amp;2.8TFT显示图像(OK)\Projecct\USER\src\main.c" ""</A3>
-        <A4>_ "G:\Users\例程\1.一幅图像采集完成触发中断\总钻风例程K60(TFT1.8显示)\Libraries\startup\DeviceSupport\IAR-ARM\startup_MK60D10.s" ""</A4>
-        <A5>_ "G:\Users\总钻风&amp;2.8TFT显示图像\Libraries\drives\inc\MK60DN10_dma.h" ""</A5>
-        <Count>6</Count>
+        <A0>_ "C:\Users\93430\Desktop\煈鼎7.18.4\煈鼎7.17\Projecct\USER\src\isr.c" ""</A0>
+        <A1>_ "E:\IARworkspace\K60例程\1.一幅图像采集完成触发中断\总钻风例程K60(OLED显示二值化图像)\Libraries\drives\src\common.c" ""</A1>
+        <A2>_ "E:\IARworkspace\K60例程\1.一幅图像采集完成触发中断\总钻风例程K60(OLED显示二值化图像)\Libraries\startup\DeviceSupport\system_MK60.c" ""</A2>
+        <A3>_ "E:\IARworkspace\煈鼎7.17\Libraries\startup\DeviceSupport\system_MK60.c" ""</A3>
+        <A4>_ "F:\work\seekfree\开发板\用户资料\3-开发板历程\4-应用例程\23-总钻风&amp;2.8TFT显示图像(OK)\Projecct\USER\src\isr.c" ""</A4>
+        <A5>_ "F:\work\seekfree\开发板\用户资料\3-开发板历程\4-应用例程\23-总钻风&amp;2.8TFT显示图像(OK)\Projecct\USER\src\main.c" ""</A5>
+        <A6>_ "G:\Users\例程\1.一幅图像采集完成触发中断\总钻风例程K60(TFT1.8显示)\Libraries\startup\DeviceSupport\IAR-ARM\startup_MK60D10.s" ""</A6>
+        <A7>_ "G:\Users\总钻风&amp;2.8TFT显示图像\Libraries\drives\inc\MK60DN10_dma.h" ""</A7>
+        <Count>8</Count>
         <SuppressDialog>1</SuppressDialog>
     </Aliases>
 </settings>

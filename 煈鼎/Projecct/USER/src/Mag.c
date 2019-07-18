@@ -2,26 +2,70 @@
 
 //============extern Variables=============
 // Extern declaration please turn to Mag.h
-U16 mag_val[6];
-
+u16 mag_val[6];
+U8 ADC1_enabled = 0;
+int last_category;
 //============local Variables==============
 
-void Mag_Init()
-{
-    adc_init(ADC1_SE4a);
-    adc_init(ADC1_SE5a);
-    adc_init(ADC1_SE6a);
-    adc_init(ADC1_SE7a);
-    adc_init(ADC1_DM0);
-    adc_init(ADC1_DP3);
+void Mag_Init(){
+  
+  if(!ADC1_enabled){
+    SIM->SCGC3 |= SIM_SCGC3_ADC1_MASK;  //ADC1 Clock Enable
+    ADC1->CFG1 |= 0
+               //|ADC_CFG1_ADLPC_MASK
+               | ADC_CFG1_ADICLK(1)
+               | ADC_CFG1_MODE(0)
+               | ADC_CFG1_ADIV(0);
+    ADC1->CFG2 |= //ADC_CFG2_ADHSC_MASK |
+                  ADC_CFG2_ADACKEN_MASK;
+    
+    ADC1->SC1[0]&=~ADC_SC1_AIEN_MASK;//disenble interrupt
+    ADC1_enabled = 1;
+  }
+  
+  PORTE->PCR[0]|=PORT_PCR_MUX(0);//adc1-4a
+  PORTE->PCR[1]|=PORT_PCR_MUX(0);//adc1-5a
+  PORTE->PCR[2]|=PORT_PCR_MUX(0);//adc1-6a
+  PORTE->PCR[3]|=PORT_PCR_MUX(0);//adc1-7a
 }
 
-void Mag_Sample()
-{
-  mag_val[0] = adc_once(ADC1_SE4a, ADC_8bit);
-  mag_val[1] = adc_once(ADC1_SE5a, ADC_8bit);
-  mag_val[2] = adc_once(ADC1_SE6a, ADC_8bit);
-  mag_val[3] = adc_once(ADC1_SE7a, ADC_8bit);
-  mag_val[5] = adc_once(ADC1_DP3, ADC_8bit);
-  mag_val[4] = mag_val[5] - adc_once(ADC1_DM0, ADC_8bit);
+void Mag_Sample(){
+  mag_val[0] = Mag1();
+  mag_val[1] = Mag2();
+  mag_val[2] = Mag3();
+  mag_val[3] = Mag4();
+  mag_val[5] = Mag6();
+  mag_val[4] = mag_val[5] - Mag5();
+}
+
+u16 Mag1(){
+  ADC1->SC1[0] = ADC_SC1_ADCH(4);
+  while((ADC1->SC1[0]&ADC_SC1_COCO_MASK)==0);
+  return ADC1->R[0];
+}
+u16 Mag2(){
+  ADC1->SC1[0] = ADC_SC1_ADCH(5);
+  while((ADC1->SC1[0]&ADC_SC1_COCO_MASK)==0);
+  return ADC1->R[0];
+}
+u16 Mag3(){
+  ADC1->SC1[0] = ADC_SC1_ADCH(6);
+  while((ADC1->SC1[0]&ADC_SC1_COCO_MASK)==0);
+  return ADC1->R[0];
+}
+u16 Mag4(){
+  ADC1->SC1[0] = ADC_SC1_ADCH(7);
+  while((ADC1->SC1[0]&ADC_SC1_COCO_MASK)==0);
+  return ADC1->R[0];
+}
+s16 Mag5(){
+  ADC1->SC1[0] = ADC_SC1_DIFF_MASK | ADC_SC1_ADCH(3);
+  while((ADC1->SC1[0]&ADC_SC1_COCO_MASK)==0);
+  return ADC1->R[0];
+  //ADC1->SC1[0] &= ~ADC_SC1_DIFF_MASK;
+}
+u16 Mag6(){
+  ADC1->SC1[0] = ADC_SC1_ADCH(3);
+  while((ADC1->SC1[0]&ADC_SC1_COCO_MASK)==0);
+  return ADC1->R[0];
 }

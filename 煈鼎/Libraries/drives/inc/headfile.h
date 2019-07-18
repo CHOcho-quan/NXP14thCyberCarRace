@@ -27,6 +27,8 @@
 #include "common.h"
 #include "misc.h"
 #include "stdio.h"
+#include "math.h"
+#include "stdbool.h"
 
 //--------函数库--------
 #include "MK60_rtc.h"
