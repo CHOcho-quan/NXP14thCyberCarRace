@@ -6,7 +6,7 @@
 
 "-p" 
 
-"C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\arm\CONFIG\debugger\NXP\MK60DN512xxx10.ddf" 
+"D:\Program Files(x86)\IAR\arm\CONFIG\debugger\NXP\MK60DN512xxx10.ddf" 
 
 "--semihosting" 
 

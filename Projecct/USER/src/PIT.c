@@ -40,49 +40,82 @@ void PIT1_IRQHandler(){
   }
 */
   //------------------------
-  
-  if (!SW3())
+  if ((SW1() && SW2() && SW3() && SW4()) || (SW1() && SW2() && !SW3() && !SW4()) || (!SW1() && SW2() && SW3() && SW4()))
   {
-    OLED_Print_Num1(1, 1, white_len_tune);
-    OLED_Print_Num1(1, 2, speed_base_line);
-    OLED_Print_Num1(1, 3, speed_base_turn);
-    OLED_Print_Num1(1, 4, circle);
-    add_or_sub = 1;
-
+    OLED_Fill(0x00);
+      OLED_P6x8Str(1, 1, "SW1 : LZ or DL");
+  OLED_P6x8Str(1, 2, "SW2 : Line Speed");
+  OLED_P6x8Str(1, 3, "SW3 : Turn Speed");
+  OLED_P6x8Str(1, 4, "SW4 : Cam Threshold");
+  OLED_P6x8Str(1, 5, "SW23 : Show Cam");
+  OLED_P6x8Str(1, 6, "SW34 : Sunshine");
   }
-  if (!SW2())
-  {
-    OLED_Print_Num1(1, 1, white_len_tune);
-    OLED_Print_Num1(1, 2, speed_base_line);
-    OLED_Print_Num1(1, 3, speed_base_turn);
-    OLED_Print_Num1(1, 4, circle);
-    add_or_sub = 0;
-  }
-    
- 
   
-  if(!SW1()){
+    if (!SW2() && SW3() && SW4())
+    {
+      OLED_Fill(0x00);
+      OLED_P6x8Str(1, 1, "Straight Line Speed");
+      OLED_Print_Num1(1, 2, speed_base_line);
+      if (!Key1())
+      {
+        add_or_sub = 1;
+        speed_base_line++;
+      }
+      if (!Key2())
+      {
+        add_or_sub = 0;
+        speed_base_line--;
+      }
+    }
     
-    OLED_Print_Num1(1, 1, mag_val[0]);OLED_Print_Num1(60, 1, circle_dir);
+    if (SW2() && !SW3() && SW4())
+    {
+      OLED_Fill(0x00);
+      OLED_P6x8Str(1, 1, "Turn Speed");
+      OLED_Print_Num1(1, 2, speed_base_turn);
+      if (!Key1())
+      {
+        speed_base_turn++;
+      }
+      if (!Key2())
+      {
+        speed_base_turn--;
+      }
+    }
+    
+    if (SW2() && SW3() && !SW4())
+    {
+      OLED_Fill(0x00);
+      OLED_P6x8Str(1, 1, "Camera Threshold");
+      OLED_Print_Num1(1, 2, image_threshold);
+      if (!Key1())
+      {
+        image_threshold++;
+      }
+      if (!Key2())
+      {
+        image_threshold--;
+      }
+    }
+    
+    if (!SW2() && !SW3() && SW4())
+    {
+      OLED_Fill(0x00);
+  dis_bmp(64,128,dis_image[0],image_threshold);
+    }
+    
+    if (!SW2 && !SW4() && SW3())
+    {
+      OLED_Fill(0x00);
+      OLED_Print_Num1(1, 1, mag_val[0]);OLED_Print_Num1(60, 1, circle_dir);
     OLED_Print_Num1(1, 2, mag_val[1]);OLED_Print_Num1(60, 2, control_type);
     OLED_Print_Num1(1, 3, mag_val[2]);OLED_Print_Num1(60, 3, only_mag);
     OLED_Print_Num1(1, 4, mag_val[3]);OLED_Print_Num1(60, 4, blind);
     OLED_Print_Num1(1, 5, mag_val[4]);OLED_Print_Num1(60, 5, speed_current);
     OLED_Print_Num1(1, 6, mag_val[5]);OLED_Print_Num1(60, 6, first_time_begin);
     OLED_Print_Num1(1, 7, circle);   OLED_Print_Num1(60, 7, pit_circle_cnt);
-    /*
-    OLED_Print_Num1(1, 1, control_type);
-    OLED_Print_Num1(1, 2, only_mag);
-    OLED_Print_Num1(1, 3, blind);
-    OLED_Print_Num1(1, 4, huandao);*/
-  }
-  
-if (!SW4())
-{
-  OLED_Fill(0x00);
-  dis_bmp(64,128,dis_image[0],image_threshold);
-}
-
+    }
+    
 //OLED_Print_Num1(1, 3, angle);
   
   
