@@ -11,7 +11,7 @@ extern uint8 dis_image[64][128];
 extern int white_len_tune;
 extern int begin_line_state;
 extern int first_time_begin;
-
+extern int first_or_second;
 void otsuThreshold(uint8 *image, uint16 col, uint16 row);
 int pendu_len();
 void check_out();

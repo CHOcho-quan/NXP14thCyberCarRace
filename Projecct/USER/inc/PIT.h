@@ -15,6 +15,8 @@ extern int white_len;
 extern int add_or_sub;
 extern int only_mag;
 extern int pit_circle_cnt;
+extern int stop_cnt;
+extern int only_mag_cnt;
 #define PIT1_PERIOD_US (u32)100000
 
   // PIT0 is used for Control

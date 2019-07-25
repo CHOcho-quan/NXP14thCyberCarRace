@@ -76,14 +76,29 @@ static int lost = 0;
 
 static int delta = 0, last_magT0 = 0, last_magT5 = 0;
 
+int blind_dir = 1;
+int blind_1_time = 4;
+int blind_2_time = 10;
 
-void blind_run(int left_or_right){
-  if(pit_1_cnt<=4)Servo_Output(220*left_or_right);
-  else if(pit_1_cnt>4 && pit_1_cnt<13)Servo_Output(-240*left_or_right);
-  else {pit_1_cnt = 0;blind=0;}
+void blind_run(){
+    if(pit_1_cnt <= blind_1_time) Servo_Output(-240*blind_dir);
+    else if(pit_1_cnt > blind_1_time && pit_1_cnt < blind_1_time + blind_2_time)Servo_Output(240*blind_dir);
+    else {pit_1_cnt = 0;blind=0;}
   
 }
 
+void circle_run(){
+  if(pit_circle_cnt<=8)ServoControl_Line();
+  else if(pit_circle_cnt>8 && pit_circle_cnt<=12)Servo_Output(240);
+  else if(pit_circle_cnt>12 && pit_circle_cnt<80)cho_dada_mag();
+  else {pit_circle_cnt = 0;circle=0;}
+}
+
+void circle_run2(){
+  if(pit_circle_cnt<=8)ServoControl_Line();
+  else if(pit_circle_cnt>8 && pit_circle_cnt<=12)Servo_Output(240);
+  else cho_dada_mag();
+}
 
 float Kp_line = 4.8;
 float Kd_line = 1.2;
@@ -123,36 +138,22 @@ void ServoControl_Line(){
     }
 }
 
-void change_speed(){
-  if(add_or_sub){
-  if(!Key1())speed_base_line++;
-  if(!Key2())speed_base_turn++;
-  //if(!Key3())if(see_line<64)see_line++;
-  if(!Key3())white_len_tune++;
-  }
-  else{
-    if(!Key1())speed_base_line--;
-  if(!Key2())speed_base_turn--;
-  //if(!Key3())if(see_line>0)see_line--;
-  if(!Key3())white_len_tune--;
-  }
-}
 
 void init_speed_base(){
-  speed_base_line=180;  //180
-  speed_base_turn=170;  //170
+  speed_base_line=220;  //180
+  speed_base_turn=190;  //170
   white_len_tune = 35;  
   see_line = 54;
   speed_current = speed_base_line;
 }
 
 void turn_speed(){
-  if(white_len>white_len_tune){speed_current = speed_base_line;BELL(0);}
-  else {speed_current = speed_base_turn;BELL(0);}
+  if(white_len>white_len_tune){speed_current = speed_base_line;}
+  else {speed_current = speed_base_turn;}
 }
 
 void turn_speed_Mag(){
-  if(dir_mag>-45 && dir_mag<45)speed_current = 130;  //170
+  if(dir_mag>-45 && dir_mag<45)speed_current = 150;  //170
   else speed_current = 110;                        //160
 }
 
@@ -266,24 +267,21 @@ void cho_dada_mag(){
   last_err_mag = err_mag;
 }
 
-void circle_run(){
-  if(pit_circle_cnt<=3)ServoControl_Line();
-  else if(pit_circle_cnt>3 && pit_circle_cnt<=11)Servo_Output(-240*circle_dir);
-  else if(pit_circle_cnt>11 && pit_circle_cnt<50)cho_dada_mag();
-  else {pit_circle_cnt = 0;circle=0;}
-}
-
 void detect_circle(){
   int magSum = 0;
-  if (mag_val[1] > 130) magSum++;
-  if (mag_val[2] > 130) magSum++;
-  if (mag_val[3] > 130) magSum++;
-  if (mag_val[4] > 130) magSum++;
+  if (mag_val[1] > 110) magSum++;
+  if (mag_val[2] > 110) magSum++;
+  if (mag_val[3] > 110) magSum++;
+  if (mag_val[4] > 110) magSum++;
   
   
   if (magSum >= 3 && (mag_val[0] > 75 || mag_val[5] > 75) && circle==0) {
     circle = 1;
-    if (mag_val[0] > mag_val[5]) circle_dir = -1; 
-    else circle_dir = 1; 
+  }
+}
+
+void stop(int dir){
+  if(stop_cnt>=4){
+    diffSpeed(0,dir);
   }
 }

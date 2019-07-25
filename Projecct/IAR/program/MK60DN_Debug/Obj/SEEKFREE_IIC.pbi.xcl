@@ -1,46 +1,46 @@
-"C:\Users\93430\Desktop\煈鼎7.18.4\煈鼎7.17\Libraries\seekfree\SEEKFREE_IIC.c"
+"C:\Users\57416\Desktop\ultimate\煈鼎\Libraries\seekfree\SEEKFREE_IIC.c"
 -std=c11
 -ferror-limit=0
 -I
-C:\Users\93430\Desktop\煈鼎7.18.4\煈鼎7.17\Projecct\IAR\program\..\..\USER\inc
+C:\Users\57416\Desktop\ultimate\煈鼎\Projecct\IAR\program\..\..\USER\inc
 -I
-C:\Users\93430\Desktop\煈鼎7.18.4\煈鼎7.17\Projecct\IAR\program\..\..\USER\src
+C:\Users\57416\Desktop\ultimate\煈鼎\Projecct\IAR\program\..\..\USER\src
 -I
-C:\Users\93430\Desktop\煈鼎7.18.4\煈鼎7.17\Projecct\IAR\program\..\..\..\Libraries\startup\CoreSupport
+C:\Users\57416\Desktop\ultimate\煈鼎\Projecct\IAR\program\..\..\..\Libraries\startup\CoreSupport
 -I
-C:\Users\93430\Desktop\煈鼎7.18.4\煈鼎7.17\Projecct\IAR\program\..\..\..\Libraries\startup\DeviceSupport\IAR-ARM
+C:\Users\57416\Desktop\ultimate\煈鼎\Projecct\IAR\program\..\..\..\Libraries\startup\DeviceSupport\IAR-ARM
 -I
-C:\Users\93430\Desktop\煈鼎7.18.4\煈鼎7.17\Projecct\IAR\program\..\..\..\Libraries\startup\DeviceSupport
+C:\Users\57416\Desktop\ultimate\煈鼎\Projecct\IAR\program\..\..\..\Libraries\startup\DeviceSupport
 -I
-C:\Users\93430\Desktop\煈鼎7.18.4\煈鼎7.17\Projecct\IAR\program\..\..\..\Libraries\drives\inc
+C:\Users\57416\Desktop\ultimate\煈鼎\Projecct\IAR\program\..\..\..\Libraries\drives\inc
 -I
-C:\Users\93430\Desktop\煈鼎7.18.4\煈鼎7.17\Projecct\IAR\program\..\..\..\Libraries\seekfree
+C:\Users\57416\Desktop\ultimate\煈鼎\Projecct\IAR\program\..\..\..\Libraries\seekfree
 -I
-C:\Users\93430\Desktop\煈鼎7.18.4\煈鼎7.17\Projecct\IAR\program\..\..\..\Libraries\FatFs
+C:\Users\57416\Desktop\ultimate\煈鼎\Projecct\IAR\program\..\..\..\Libraries\FatFs
 -I
-C:\Users\93430\Desktop\煈鼎7.18.4\煈鼎7.17\Projecct\IAR\program\..\..\..\Libraries\FatFs\option
+C:\Users\57416\Desktop\ultimate\煈鼎\Projecct\IAR\program\..\..\..\Libraries\FatFs\option
 -I
-C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\arm\inc
+D:\Program Files(x86)\IAR\arm\inc
 -I
-C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\arm\inc\c
+D:\Program Files(x86)\IAR\arm\inc\c
 -I
-C:\Users\93430\Desktop\煈鼎7.18.4\煈鼎7.17\Projecct\USER\inc
+C:\Users\57416\Desktop\ultimate\煈鼎\Projecct\USER\inc
 -I
-C:\Users\93430\Desktop\煈鼎7.18.4\煈鼎7.17\Projecct\USER\src
+C:\Users\57416\Desktop\ultimate\煈鼎\Projecct\USER\src
 -I
-C:\Users\93430\Desktop\煈鼎7.18.4\煈鼎7.17\Libraries\startup\CoreSupport
+C:\Users\57416\Desktop\ultimate\煈鼎\Libraries\startup\CoreSupport
 -I
-C:\Users\93430\Desktop\煈鼎7.18.4\煈鼎7.17\Libraries\startup\DeviceSupport\IAR-ARM
+C:\Users\57416\Desktop\ultimate\煈鼎\Libraries\startup\DeviceSupport\IAR-ARM
 -I
-C:\Users\93430\Desktop\煈鼎7.18.4\煈鼎7.17\Libraries\startup\DeviceSupport
+C:\Users\57416\Desktop\ultimate\煈鼎\Libraries\startup\DeviceSupport
 -I
-C:\Users\93430\Desktop\煈鼎7.18.4\煈鼎7.17\Libraries\drives\inc
+C:\Users\57416\Desktop\ultimate\煈鼎\Libraries\drives\inc
 -I
-C:\Users\93430\Desktop\煈鼎7.18.4\煈鼎7.17\Libraries\seekfree
+C:\Users\57416\Desktop\ultimate\煈鼎\Libraries\seekfree
 -I
-C:\Users\93430\Desktop\煈鼎7.18.4\煈鼎7.17\Libraries\FatFs
+C:\Users\57416\Desktop\ultimate\煈鼎\Libraries\FatFs
 -I
-C:\Users\93430\Desktop\煈鼎7.18.4\煈鼎7.17\Libraries\FatFs\option
+C:\Users\57416\Desktop\ultimate\煈鼎\Libraries\FatFs\option
 -D__CHAR_BITS__=8
 -D__CHAR_MAX__=127
 -D__CHAR_MIN__=(-__CHAR_MAX__-1)
@@ -308,8 +308,8 @@ C:\Users\93430\Desktop\煈鼎7.18.4\煈鼎7.17\Libraries\FatFs\option
 -D__EDG_FLOAT128_ENABLING_POSSIBLE=0
 -DMK60DN=1
 -D_DLIB_FILE_DESCRIPTOR=1
--D_DLIB_CONFIG_FILE_HEADER_NAME="C:\\Program Files (x86)\\IAR Systems\\Embedded Workbench 8.0\\arm\\INC\\c\\DLib_Config_Normal.h"
--D_DLIB_CONFIG_FILE_STRING="C:\\Program Files (x86)\\IAR Systems\\Embedded Workbench 8.0\\arm\\INC\\c\\DLib_Config_Normal.h"
+-D_DLIB_CONFIG_FILE_HEADER_NAME="D:\\Program Files(x86)\\IAR\\arm\\INC\\c\\DLib_Config_Normal.h"
+-D_DLIB_CONFIG_FILE_STRING="D:\\Program Files(x86)\\IAR\\arm\\INC\\c\\DLib_Config_Normal.h"
 -D__VERSION__="IAR ANSI C/C++ Compiler V8.20.1.14183/W32 for ARM"
 -D__ICCARM_OLD_DEFINED_VAARGS__=1
 -D__VA_STACK_ALIGN__=8

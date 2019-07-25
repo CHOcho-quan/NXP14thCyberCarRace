@@ -97,61 +97,14 @@ int pendu_len(){
   return 63-i;
 }
 
-
 int miss_road_type(){
-  //if(huandao==3)return 0;
+  if(circle==1)return 0;
   if(blind)return 0;
+  if(only_mag)return 0;
+  
   int i,j;
-  int up_has_white = 0;
+  
   int miss = 0;
-  for(i=0;i<LEN/2;++i){
-    for(j=0;j<WID;++j)if(dis_image[i][j]>image_threshold)++up_has_white;
-  }
-  
-  int bot_has_white = 0;
-  for(i=LEN/2;i<LEN;++i){
-    for(j=0;j<WID;++j)if(dis_image[i][j]>image_threshold)++bot_has_white;
-  }
-  
-  int left_seg=0,right_seg=0;
-  for(i=1;i<LEN;++i){
-    if((dis_image[i-1][0]-image_threshold)*(dis_image[i][0]-image_threshold)<0)++left_seg;
-    if((dis_image[i-1][WID-1]-image_threshold)*(dis_image[i][WID-1]-image_threshold)<0)++right_seg;
-  }
-  
-  left_seg /= 2;
-  right_seg /= 2;
-  
-  int left_beg=0,right_beg=0;
-  for(i=0;i<LEN;++i){
-    if(dis_image[i][0]>image_threshold){
-      left_beg = i;
-      break;
-    }
-  }
-  for(i=0;i<LEN;++i){
-    if(dis_image[i][WID-1]>image_threshold){
-      right_beg = i;
-      break;
-    }
-  }
-  
-  int left_end = 0, right_end = 0;
-  for(i=LEN-1;i>=0;--i){
-    if(dis_image[i][0]>image_threshold){
-      left_end = i;
-      break;
-    }
-  }
-  for(i=LEN-1;i>=0;--i){
-    if(dis_image[i][WID-1]>image_threshold){
-      right_end = i;
-      break;
-    }
-  }
-  
-  int left_len = left_end - left_beg;
-  int right_len = right_end - right_beg;
   
   int mid_clear = 0;
     for(i=0;i<WID;++i){
@@ -169,24 +122,61 @@ int miss_road_type(){
     
     mid_clear /=2;
   
-  //if(!up_has_white && bot_has_white && abs(mid_clear-WID/2)<4 && ((left_seg==0 && right_seg==0)||((left_beg > 40 && left_len<20 && right_len==0) || (right_beg>40 && right_len<20 && left_len==0))))miss = 1; 
-  
-    int bot_area=0;
-    for(i=LEN/2;i<LEN;++i){
-      for(j=0;j<WID;++j){
-        if(dis_image[i][j]>image_threshold)++bot_area;
+    int cut_row=0;
+    for(i=61;i>=0;--i){
+      if(dis_image[i][mid_clear]<image_threshold){
+        cut_row = i+1;
+        break;
       }
     }
     
+    int cut_beg=0,cut_end=WID-1;
+    for(i=0;i<WID;++i){
+      if(dis_image[cut_row+2][i]>image_threshold){
+        cut_beg=i;
+        break;
+      }
+    }
+    for(i=WID-1;i>=0;--i){
+      if(dis_image[cut_row+2][i]>image_threshold){
+        cut_end = i;
+        break;
+      }
+    }
+    
+    int up_area = 0;
+    for(i=0;i<LEN/4;++i){
+      for(j=0;j<WID;++j){
+        if(dis_image[i][j]>image_threshold)++up_area;
+      }
+    }
+
+    int left_area=0,mid_area=0,right_area=0;
+    
+    for(i=LEN/4;i<cut_row-2;++i){                     // -2 means to avoid noise.
+      for(j=0;j<cut_beg;++j){
+        if(dis_image[i][j]>image_threshold)++left_area;
+      }
+      for(j=cut_beg;j<cut_end;++j){
+        if(dis_image[i][j]>image_threshold)++mid_area;
+      }
+      for(j=cut_end;j<WID;++j){
+        if(dis_image[i][j]>image_threshold)++right_area;
+      }
+    }
+   
+    int else_sum = WID*LEN/4-(cut_row-LEN/4)*(cut_end-cut_beg);
     
     
-    if(!up_has_white && bot_area>2500 && (left_seg==0 && right_seg==0 && abs(mid_clear-WID/2)<4))miss=1;
-  
+    if(mid_area==0 && cut_row>LEN*2/5 && left_area + up_area + right_area < else_sum/3  && abs(mid_clear-WID/2)<8 )miss=1;
+    
+    //if( abs(dir_cam)<100 &&cut_row>LEN*2/5 && abs(mid_clear-WID/2)<4) miss=1;
+    
   if(miss){
     BELL(1);
-    if(last_miss!=miss)++first_or_second;
-    if(first_or_second==1)if(!SW1())return 2;else return 1;
-    if(first_or_second==2)if(!SW1())return 1;else return 2;
+    if(last_miss!=miss && miss==1)++first_or_second;
+    if(first_or_second==1)return 2;
+    if(first_or_second >1)return 1;
   }
   else BELL(0);
   
@@ -194,16 +184,19 @@ int miss_road_type(){
   return miss;
 }
 
+
 void check_out(){
   int i,j;
   int bai_cnt = 0;
-  for(i=0;i<LEN;++i){
+  for(i=LEN/3;i<LEN;++i){
     for(j=0;j<WID;++j){
       if(dis_image[i][j]>image_threshold)++bai_cnt;
     }
   }
-  if(bai_cnt>3500)only_mag=0;
+  if(bai_cnt>2730){only_mag=0;BELL(1);}
+  else{BELL(0);}
 }
+
 
 void begin_line_detect(){
   int i;
@@ -211,11 +204,13 @@ void begin_line_detect(){
   for(i=1;i<WID;++i){
     if((dis_image[see_line][i-1]-image_threshold)*(dis_image[see_line][i]-image_threshold)<0)++change_cnt;
   }
-  if(change_cnt>14){
+  if(change_cnt>18){ //14
     if(begin_line_state==0){
+        BELL(1);
         first_time_begin++;
         begin_line_state = 1;
       }
+      else BELL(0);
     }
   else begin_line_state=0;
 }
